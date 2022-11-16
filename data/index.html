@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>👐 H4CK3r RGB 🚥</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="w3.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="iro.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body class="ha-fond w3-animate-opacity">
+
+    <div class="w3-card ha-title w3-padding-small w3-center">
+        <h1>👐 H4CK3r RGB 🚥</h1>
+    </div>
+
+    <!-- SELECT + ON / OFF ####################################################################-->
+
+    <div class="ha-body w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>⚡ Power Select 📋</h3>
+        </header>
+        <select onchange="setPattern(this)" id="patternSelector" class="w3-round-large w3-margin-top w3-select ha-select" style="width:80%;">
+            <option value="" disabled selected>Choix Mode</option>
+            <option value="0">💡 Static 💡</option>
+            <option value="1">✨ Blink ✨</option>
+            <option value="4">🔄 Wipe 🔄</option>
+            <option value="6">🐍 Snake 🐍</option>
+<!--            <option value="2">🔥 Light 🧊</option>-->
+            <option value="5">🚨 Police 🚨</option>
+            <option value="7">🎆 Firework 🎆</option>
+        </select>
+
+        <button onclick="onButton()" style="width:40%;" class="ha-power ha-green w3-round-large w3-margin w3-green w3-button w3-xlarge w3-wide" >ON</button>
+        <button onclick="offButton()" style="width:40%;" class="ha-power ha-red w3-round-large w3-margin w3-red w3-button w3-xlarge w3-wide" >OFF</button>
+
+    </div>
+
+    <!-- PATTERN FULL ####################################################################-->
+
+    <div id="pattern_full" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>💡 Static 💡</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_full"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(0)" type="tel" id="full_speed" value="50" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Rainbow</span>
+        <span class="ha-switch"><label class="switch"><input onchange="setParameters(0)" type="checkbox" id="full_rainbow"><span class="slider round"></span></label></span>
+
+    </div>
+
+    <!-- PATTERN BLINK ####################################################################-->
+
+    <div id="pattern_blink" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>✨ Blink ✨</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_blink"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(1)" type="tel" id="blink_speed" value="50" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Distance</span>
+        <input onchange="setParameters(1)" type="tel" id="blink_gap" value="3" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Rainbow</span>
+        <span class="ha-switch"><label class="switch"><input onchange="setParameters(1)" type="checkbox" id="blink_rainbow"><span class="slider round"></span></label></span>
+
+    </div>
+
+    <!-- PATTERN LIGHT ####################################################################-->
+
+    <div id="pattern_light" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>🔥 Light 🧊</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_light"></div>
+
+    </div>
+
+    <!-- PATTERN WIPE ####################################################################-->
+
+    <div id="pattern_wipe" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>Wipe</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_wipe"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(4)" type="tel" id="wipe_speed" value="30" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Rainbow</span>
+        <span class="ha-switch"><label class="switch"><input onchange="setParameters(4)" type="checkbox" id="wipe_rainbow"><span class="slider round"></span></label></span>
+
+    </div>
+
+    <!-- PATTERN POLICE ####################################################################-->
+
+    <div id="pattern_police" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>🚨 Police 🚨</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_police"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(5)" type="tel" id="police_speed" value="500" class="w3-wide ha-form">
+
+    </div>
+
+    <!-- PATTERN SNAKE ####################################################################-->
+
+    <div id="pattern_snake" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar  w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>🐍 Snake 🐍</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_snake"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(6)" type="tel" id="snake_speed" value="50" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Nombre</span>
+        <input onchange="setParameters(6)" type="tel" id="snake_number" value="5" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Longueur</span>
+        <input onchange="setParameters(6)" type="tel" id="snake_lenght" value="12" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Rainbow</span>
+        <span class="ha-switch"><label class="switch"><input onchange="setParameters(6)" type="checkbox" id="snake_rainbow"><span class="slider round"></span></label></span>
+
+    </div>
+
+    <!-- PATTERN FIREWORK ####################################################################-->
+
+    <div id="pattern_firework" class="ha-body ha-pattern w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar w3-round-large">
+        <header class="w3-container ha-title">
+        <h3>🎆 Firework 🎆</h3>
+        </header>
+
+        <div class="w3-section ColorPicker" id="picker_firework"></div>
+
+        <span class="w3-wide ha-text">Temps</span>
+        <input onchange="setParameters(7)" type="tel" id="firework_speed" value="80" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Number</span>
+        <input onchange="setParameters(7)" type="tel" id="firework_number" value="2" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Radius</span>
+        <input onchange="setParameters(7)" type="tel" id="firework_radius" value="6" class="w3-wide ha-form">
+        <br>
+        <span class="w3-wide ha-text">Rainbow</span>
+        <span class="ha-switch"><label class="switch"><input onchange="setParameters(7)" type="checkbox" id="firework_rainbow"><span class="slider round"></span></label></span>
+    </div>
+
+    <!-- DEBUG ####################################################################-->
+
+    <div onclick="secretParam()" class="ha-text-fond w3-padding w3-center">
+        <i>V1.0 Done with ❤️‍🔥 by BenCaddyro</i>
+    </div>
+
+    <div class="ha-body w3-margin w3-center w3-card w3-bottombar w3-rightbar w3-leftbar hidden w3-round-large" id="secretParameters">
+        <header class="w3-container ha-title">
+        <h3>🧮 🤫 📟</h3>
+        </header>
+
+        <span class="w3-wide ha-text">Led</span>
+        <input onchange="setNumber()" type="tel" id="ledNumber" value="360" class="w3-wide w3-margin ha-form">
+
+        <button onclick="getParameters()" class="w3-button ha-button" style="width:40%;">Debug</button>
+        <p><span class="ha-fond" id="currentParameters"></span></p>
+
+    </div>
+
+</body>
+</html>
